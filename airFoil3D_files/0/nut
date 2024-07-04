@@ -1,0 +1,48 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2306                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      nut;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 2 -1 0 0 0 0];
+
+internalField   uniform 0; //changed from 1.48e-5 for re =200,000, 0.695e-5 gives re=426,000
+
+boundaryField
+{
+    inlet
+    {
+        type            freestream;
+        freestreamValue $internalField;
+    }
+
+    outlet
+    {
+        type            freestream;
+        freestreamValue $internalField;
+    }
+
+    walls
+    {
+        type            nutUSpaldingWallFunction;
+        value           uniform 0;
+    }
+
+    "(front|back)"
+    {
+        type            symmetry;
+    }
+}
+
+
+// ************************************************************************* //
