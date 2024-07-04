@@ -1,0 +1,94 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  10
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 10
+Exec   : SRFSimpleFoam -parallel
+Date   : Apr 12 2024
+Time   : 12:41:39
+Host   : "cfd3"
+PID    : 438656
+I/O    : uncollated
+Case   : /cfdfs/home/rs840/levlv3/system
+nProcs : 48
+Slaves : 
+47
+(
+"cfd3.438657"
+"cfd3.438658"
+"cfd3.438659"
+"cfd3.438660"
+"cfd3.438662"
+"cfd3.438663"
+"cfd3.438664"
+"cfd3.438666"
+"cfd3.438667"
+"cfd3.438668"
+"cfd3.438670"
+"cfd3.438671"
+"cfd3.438672"
+"cfd3.438673"
+"cfd3.438674"
+"cfd3.438675"
+"cfd3.438676"
+"cfd3.438677"
+"cfd3.438678"
+"cfd3.438679"
+"cfd3.438680"
+"cfd3.438681"
+"cfd3.438682"
+"cfd3.438683"
+"cfd3.438684"
+"cfd3.438685"
+"cfd3.438686"
+"cfd3.438687"
+"cfd3.438688"
+"cfd3.438689"
+"cfd3.438690"
+"cfd3.438691"
+"cfd3.438692"
+"cfd3.438693"
+"cfd3.438694"
+"cfd3.438695"
+"cfd3.438696"
+"cfd3.438697"
+"cfd3.438698"
+"cfd3.438699"
+"cfd3.438700"
+"cfd3.438701"
+"cfd3.438702"
+"cfd3.438703"
+"cfd3.438704"
+"cfd3.438705"
+"cfd3.438706"
+)
+
+Pstream initialised with:
+    floatTransfer      : 0
+    nProcsSimpleSum    : 0
+    commsType          : nonBlocking
+    polling iterations : 0
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+[0] 
+[0] 
+[0] --> FOAM FATAL ERROR: 
+[0] SRFSimpleFoam: cannot open case directory "/cfdfs/home/rs840/levlv3/system/processor0"
+[0] 
+[0] 
+FOAM parallel run exiting
+[0] 
+--------------------------------------------------------------------------
+MPI_ABORT was invoked on rank 0 in communicator MPI COMMUNICATOR 3 SPLIT FROM 0 
+with errorcode 1.
+
+NOTE: invoking MPI_ABORT causes Open MPI to kill all MPI processes.
+You may or may not see output from other processes, depending on
+exactly when Open MPI kills them.
+--------------------------------------------------------------------------

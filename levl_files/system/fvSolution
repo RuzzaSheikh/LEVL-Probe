@@ -1,0 +1,99 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2312                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvSolution;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+solvers
+{
+    p
+    {
+        solver          GAMG;
+        tolerance       1e-06;
+        relTol          0.1;
+        smoother        GaussSeidel;
+    }
+    
+    pFinal
+    {
+	$p;
+	relTol		0;
+    }
+
+    Phi
+    {
+	$p;
+    }
+
+    "Urel.*"
+    {
+        solver          smoothSolver;
+        smoother        GaussSeidel;
+        nSweeps         2;
+        tolerance       1e-08;
+        relTol          0.1;
+    }
+
+    "nuTilda.*"
+    {
+        solver          smoothSolver;
+        smoother        GaussSeidel;
+        nSweeps         1;
+        tolerance       1e-08;
+        relTol          0.1;
+    }
+    
+    "(U|k|epsilon|omega|R)"
+    {
+        solver          smoothSolver;
+        smoother        GaussSeidel;
+        tolerance       1e-05;
+        relTol          0.1;
+    }
+
+}
+
+SIMPLE
+{
+    nNonOrthogonalCorrectors 1;
+    consistent yes;
+//pRefCell    0;
+//pRefValue    0;
+    residualControl
+    {
+        p               1e-6;
+        Urel            1e-6;
+        "(k|epsilon|omega|f|v2)" 1e-5;
+    }
+
+}
+
+PIMPLE
+{
+    nCorrectors     3;
+    nNonOrthogonalCorrectors 0;
+}
+
+relaxationFactors
+{
+    "Urel.*"            0.7;
+    "nuTilda.*"         0.7;
+    "omega.*" 		0.6;
+    "p.*"		0.3;
+    "k.*"		0.6;
+}
+
+
+// ************************************************************************* //
+
